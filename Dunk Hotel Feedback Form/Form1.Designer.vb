@@ -45,6 +45,8 @@ Partial Class frm_feedback
         Me.Tbl_FeedbackBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Tbl_FeedbackTableAdapter = New Dunk_Hotel_Feedback_Form.Hotel_DataDataSetTableAdapters.tbl_FeedbackTableAdapter()
         Me.TableAdapterManager = New Dunk_Hotel_Feedback_Form.Hotel_DataDataSetTableAdapters.TableAdapterManager()
+        Me.timer_timeout = New System.Windows.Forms.Timer(Me.components)
+        Me.lbl_timer = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.pic_logo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pic_leftbackground, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -228,12 +230,30 @@ Partial Class frm_feedback
         Me.TableAdapterManager.tbl_FeedbackTableAdapter = Me.Tbl_FeedbackTableAdapter
         Me.TableAdapterManager.UpdateOrder = Dunk_Hotel_Feedback_Form.Hotel_DataDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'timer_timeout
+        '
+        Me.timer_timeout.Interval = 1000
+        '
+        'lbl_timer
+        '
+        Me.lbl_timer.AutoSize = True
+        Me.lbl_timer.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_timer.ForeColor = System.Drawing.Color.White
+        Me.lbl_timer.Location = New System.Drawing.Point(264, 545)
+        Me.lbl_timer.Name = "lbl_timer"
+        Me.lbl_timer.Size = New System.Drawing.Size(181, 18)
+        Me.lbl_timer.TabIndex = 14
+        Me.lbl_timer.Text = "Timeout in 60 seconds"
+        Me.lbl_timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lbl_timer.Visible = False
+        '
         'frm_feedback
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Dunk_Hotel_Feedback_Form.My.Resources.Resources.dvsup
         Me.ClientSize = New System.Drawing.Size(984, 592)
+        Me.Controls.Add(Me.lbl_timer)
         Me.Controls.Add(Me.txt_rating)
         Me.Controls.Add(Me.pic_arrow)
         Me.Controls.Add(Me.lbl_feedback)
@@ -286,5 +306,7 @@ Partial Class frm_feedback
     Friend WithEvents TableAdapterManager As Dunk_Hotel_Feedback_Form.Hotel_DataDataSetTableAdapters.TableAdapterManager
     Friend WithEvents txt_rating As System.Windows.Forms.ComboBox
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents timer_timeout As System.Windows.Forms.Timer
+    Friend WithEvents lbl_timer As System.Windows.Forms.Label
 
 End Class

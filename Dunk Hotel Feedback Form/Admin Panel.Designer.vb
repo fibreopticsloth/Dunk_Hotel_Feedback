@@ -34,7 +34,6 @@ Partial Class frm_adminpanel
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txt_searchterm = New System.Windows.Forms.TextBox()
-        Me.btn_search = New System.Windows.Forms.Button()
         Me.btn_reset = New System.Windows.Forms.Button()
         CType(Me.Hotel_DataDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tbl_FeedbackBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,19 +98,10 @@ Partial Class frm_adminpanel
         '
         'txt_searchterm
         '
-        Me.txt_searchterm.Location = New System.Drawing.Point(199, 12)
+        Me.txt_searchterm.Location = New System.Drawing.Point(246, 12)
         Me.txt_searchterm.Name = "txt_searchterm"
         Me.txt_searchterm.Size = New System.Drawing.Size(148, 20)
         Me.txt_searchterm.TabIndex = 10
-        '
-        'btn_search
-        '
-        Me.btn_search.Location = New System.Drawing.Point(353, 10)
-        Me.btn_search.Name = "btn_search"
-        Me.btn_search.Size = New System.Drawing.Size(75, 23)
-        Me.btn_search.TabIndex = 11
-        Me.btn_search.Text = "Search"
-        Me.btn_search.UseVisualStyleBackColor = True
         '
         'btn_reset
         '
@@ -128,10 +118,12 @@ Partial Class frm_adminpanel
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(641, 361)
         Me.Controls.Add(Me.btn_reset)
-        Me.Controls.Add(Me.btn_search)
         Me.Controls.Add(Me.txt_searchterm)
         Me.Controls.Add(Me.Tbl_FeedbackDataGridView)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(657, 399)
+        Me.MinimumSize = New System.Drawing.Size(657, 399)
         Me.Name = "frm_adminpanel"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Admin Panel"
@@ -152,6 +144,5 @@ Partial Class frm_adminpanel
     Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents txt_searchterm As System.Windows.Forms.TextBox
-    Friend WithEvents btn_search As System.Windows.Forms.Button
     Friend WithEvents btn_reset As System.Windows.Forms.Button
 End Class

@@ -917,9 +917,11 @@ Namespace Hotel_DataDataSetTableAdapters
             Me._commandCollection(1) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        ID, Name, Rating, Feedback" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM            tbl_Feedback" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE    " & _
-                "    (Feedback LIKE '%' + ? + '%')"
+                "    (Feedback LIKE '%' + ? + '%') OR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         (Name LIKE '%' + " & _
+                "? + '%')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Feedback", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Feedback", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Name", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Name", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._commandCollection(2) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "INSERT INTO `tbl_Feedback` (`Name`, `Rating`, `Feedback`) VALUES (?, ?, ?)"
@@ -957,12 +959,17 @@ Namespace Hotel_DataDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, False)> _
-        Public Overridable Overloads Function FillBySearchTerm(ByVal dataTable As Hotel_DataDataSet.tbl_FeedbackDataTable, ByVal Feedback As String) As Integer
+        Public Overridable Overloads Function FillBySearchTerm(ByVal dataTable As Hotel_DataDataSet.tbl_FeedbackDataTable, ByVal Feedback As String, ByVal Name As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Feedback Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Feedback, String)
+            End If
+            If (Name Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Name, String)
             End If
             If (Me.ClearBeforeFill = True) Then
                 dataTable.Clear()
@@ -975,12 +982,17 @@ Namespace Hotel_DataDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], False)> _
-        Public Overridable Overloads Function GetDataBy1(ByVal Feedback As String) As Hotel_DataDataSet.tbl_FeedbackDataTable
+        Public Overridable Overloads Function GetDataBy1(ByVal Feedback As String, ByVal Name As String) As Hotel_DataDataSet.tbl_FeedbackDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Feedback Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Feedback, String)
+            End If
+            If (Name Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Name, String)
             End If
             Dim dataTable As Hotel_DataDataSet.tbl_FeedbackDataTable = New Hotel_DataDataSet.tbl_FeedbackDataTable()
             Me.Adapter.Fill(dataTable)
